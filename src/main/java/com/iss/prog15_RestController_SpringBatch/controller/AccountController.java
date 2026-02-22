@@ -12,12 +12,9 @@ import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
@@ -86,5 +83,10 @@ public class AccountController {
        return  exitStatus.getExitCode();
 
     }
-
+    @PostMapping("/addAccount")
+    @ResponseBody
+    public ResponseEntity<Account> addAccount(Account account){
+      accountServices.saveAccount(account);
+      return ResponseEntity.ok(account);
+    }
 }
