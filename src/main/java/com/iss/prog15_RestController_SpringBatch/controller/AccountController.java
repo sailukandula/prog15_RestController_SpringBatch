@@ -21,6 +21,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/account")
+@CrossOrigin
 public class AccountController {
 
     @Autowired
